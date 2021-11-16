@@ -1,0 +1,35 @@
+name: Super Linter
+
+# Controls when the workflow will run
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        # Slim version does not support rust linters, dotenv linters, armttk linters, pwsh linters and c# linters
+        uses: github/super-linter/slim@v4.8.1
+        env:
+          # When set to false, only new or edited files will be parsed for validation.
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          # Mark the status of each individual linter run in the Checks section of a pull request
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_PYTHON_PYLINT: false
