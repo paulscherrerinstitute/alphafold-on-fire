@@ -23,7 +23,7 @@ jobs:
 
       - name: Lint Code
         # Slim version does not support rust linters, dotenv linters, armttk linters, pwsh linters and c# linters
-        uses: github/super-linter/slim@v4.8.1
+        uses: github/super-linter/slim@v4
         env:
           # When set to false, only new or edited files will be parsed for validation.
           VALIDATE_ALL_CODEBASE: false
