@@ -45,7 +45,7 @@ jobs:
         # Slim version does not support rust linters, dotenv linters, armttk linters, pwsh linters and c# linters
         uses: github/super-linter/slim@v4.8.1
         env:
-          PYTHONPATH: "/github/workspace:/github/workflow/.venv/lib/python3.9/site-packages"
+          PYTHONPATH: "/github/workspace/backend:/github/workflow/.venv/lib/python3.9/site-packages"
           # When set to false, only new or edited files will be parsed for validation.
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
