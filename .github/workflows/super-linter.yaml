@@ -18,6 +18,7 @@ jobs:
       run:
         # Step into backend
         working-directory: ./backend
+    container: github/super-linter:slim-v4
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Code
@@ -38,17 +39,14 @@ jobs:
           poetry config virtualenvs.in-project true
           poetry install --no-interaction --no-ansi
 
-      - name: Move dependencies
-        run: mv .venv /home/runner/work/_temp/_github_workflow
-
-      - name: Lint Code Base
-        # Slim version does not support rust linters, dotenv linters, armttk linters, pwsh linters and c# linters
-        uses: github/super-linter/slim@v4.8.1
-        env:
-          PYTHONPATH: "/github/workspace/backend:/github/workflow/.venv/lib/python3.9/site-packages"
-          # When set to false, only new or edited files will be parsed for validation.
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          # Mark the status of each individual linter run in the Checks section of a pull request
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_PYTHON_PYLINT: false
+      # - name: Lint Code Base
+      #   # Slim version does not support rust linters, dotenv linters, armttk linters, pwsh linters and c# linters
+      #   uses: github/super-linter/slim@v4.8.1
+      #   env:
+      #     PYTHONPATH: "/github/workspace/backend:/github/workflow/.venv/lib/python3.9/site-packages"
+      #     # When set to false, only new or edited files will be parsed for validation.
+      #     VALIDATE_ALL_CODEBASE: false
+      #     DEFAULT_BRANCH: main
+      #     # Mark the status of each individual linter run in the Checks section of a pull request
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     VALIDATE_PYTHON_PYLINT: false
