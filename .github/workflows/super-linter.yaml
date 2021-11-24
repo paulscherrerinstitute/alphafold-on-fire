@@ -2,8 +2,6 @@ name: Super Linter
 
 # Controls when the workflow will run
 on:
-  push:
-    branches-ignore: [main]
   pull_request:
     branches: [main]
 
@@ -12,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Lint Code Base
+    name: Lint Code
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +21,7 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-      - name: Lint Code Base
+      - name: Lint Code
         # Slim version does not support rust linters, dotenv linters, armttk linters, pwsh linters and c# linters
         uses: github/super-linter/slim@v4
         env:
