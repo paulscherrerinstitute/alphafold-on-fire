@@ -1,8 +1,14 @@
 from fastapi import testclient
 
-from app import main
+from app import config, main
 
+settings = config.get_settings()
 client = testclient.TestClient(main.app)
+
+
+def test_app() -> None:
+    assert main.app.title == "alphafold-on-fire"
+    assert main.app.version == settings.releaseId
 
 
 def test_get_root() -> None:

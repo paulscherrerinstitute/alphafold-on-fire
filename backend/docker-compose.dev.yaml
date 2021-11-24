@@ -8,6 +8,9 @@ services:
       target: development
     volumes:
       - .:/usr/src/aof
+    environment:
+      - VERSION=dev
+      - RELEASEID=dev
     ports:
       - 8000:8000
     command: uvicorn app.main:app --host 0.0.0.0 --reload
