@@ -1,2 +1,5 @@
 # VSCode stuff
 .vscode/
+
+# logs of local super-linter runs
+super-linter.log
