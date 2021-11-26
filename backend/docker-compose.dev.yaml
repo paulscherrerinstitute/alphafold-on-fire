@@ -8,4 +8,6 @@ services:
       target: development
     volumes:
       - .:/usr/src/aof
-    command: /bin/sh -c "while sleep 1000; do :; done" # infinite loop
+    ports:
+      - 8000:8000
+    command: uvicorn app.main:app --host 0.0.0.0 --reload

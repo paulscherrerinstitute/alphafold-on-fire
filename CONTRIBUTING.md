@@ -7,3 +7,4 @@ You will need `docker` and `docker-compose` installed as prerequisites.
 cd backend/
 docker-compose -f docker-compose.dev.yaml up -d --build
 ```
+The app will be exposed on `localhost:8000`.
