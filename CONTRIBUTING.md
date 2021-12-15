@@ -8,3 +8,24 @@ cd backend/
 docker-compose -f docker-compose.dev.yaml up -d --build
 ```
 The app will be exposed on `localhost:8000`.
+
+### Keycloak
+Users:
+```json
+[
+  {
+    "username": "jane",
+    "password": "jane"
+  }
+]
+```
+
+How to export the keycloak realm:
+```console
+docker exec -it keycloak-aof /opt/jboss/keycloak/bin/standalone.sh \
+-Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=export \
+-Dkeycloak.migration.provider=singleFile \
+-Dkeycloak.migration.realmName=dev \
+-Dkeycloak.migration.usersExportStrategy=REALM_FILE \
+-Dkeycloak.migration.file=/tmp/io/dev-realm.json
+```
