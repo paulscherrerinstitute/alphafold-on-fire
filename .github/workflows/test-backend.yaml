@@ -40,4 +40,12 @@ jobs:
           VERSION: test
           RELEASEID: test
         run: |
-          python -m pytest --cov=app
+          python -m pytest --cov=app --cov-report=xml
+
+      - name: Codecov
+        # You may pin to the exact commit or the version.
+        # uses: codecov/codecov-action@f32b3a3741e1053eb607407145bc9619351dc93b
+        uses: codecov/codecov-action@v2
+        with:
+          # Flag upload to group coverage metrics (e.g. unittests | integration | ui,chrome)
+          flags: backend # optional
