@@ -35,3 +35,9 @@ services:
     ports:
       - 8000:8000
     command: uvicorn app.main:app --host 0.0.0.0 --reload
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:8000/health || exit 1"
+        ]
