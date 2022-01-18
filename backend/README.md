@@ -9,6 +9,7 @@
 .
 ├── app  # src for the application
 │   ├── config.py  # reading in settings from env
+│   ├── database.py  # configuring database connection
 │   ├── main.py  # main entrypoint for the application
 │   ├── routers  # route definitions
 │   └── schemas  # pydantic model definitions
