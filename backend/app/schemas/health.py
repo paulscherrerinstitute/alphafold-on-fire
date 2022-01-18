@@ -1,4 +1,5 @@
 import enum
+from typing import Any
 
 import pydantic
 
@@ -13,3 +14,4 @@ class Health(pydantic.BaseModel):
     status: Status
     version: str
     releaseId: str
+    checks: dict[str, list[dict[str, Any]]]

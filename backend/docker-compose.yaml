@@ -39,6 +39,8 @@ services:
 
   app:
     container_name: app-aof
+    depends_on:
+      - postgres
     build:
       context: .
       target: development
@@ -47,6 +49,9 @@ services:
     environment:
       - VERSION=dev
       - RELEASEID=dev
+      - DB_URI=postgresql+asyncpg://admin:admin@postgres/aof
+      - DB_ECHO=True
+      - DB_HIDE_PARAMS=False
     ports:
       - 8000:8000
     command: uvicorn app.main:app --host 0.0.0.0 --reload

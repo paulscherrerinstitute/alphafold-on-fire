@@ -15,11 +15,16 @@ def test_get_health() -> None:
     assert response.headers["content-type"] == "application/health+json"
     assert response.headers["cache-control"] == "max-age=3600"
     payload = response.json()
-    for key in ["status", "version", "releaseId"]:
+    for key in ["status", "version", "releaseId", "checks"]:
         assert key in payload
     assert payload["status"] == "pass"
     assert payload["version"] == settings.version
     assert payload["releaseId"] == settings.releaseId
+    for key in ["postgresql:responseTime", "postgresql:uptime"]:
+        assert key in payload["checks"]
+        for item in payload["checks"][key]:
+            assert "componentType" in item
+            assert item["componentType"] == "datastore"
 
 
 @pytest.mark.parametrize(
