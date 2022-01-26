@@ -437,6 +437,17 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pyfirecrest"
+version = "0.0.12"
+description = "pyFirecrest is a python wrapper for FirecREST"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+requests = ">=2.14.0"
+
+[[package]]
 name = "pyflakes"
 version = "2.4.0"
 description = "passive checker of Python programs"
@@ -712,7 +723,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "edc861c6d59815fd79efc120dfc2de6a22dd668a50bc2a9a739ce4264cadaf6c"
+content-hash = "da4c4487a0cc4d71cb13c8e77f589c7e98b53e4e1a29e7f7059c7b85af9c94f0"
 
 [metadata.files]
 alembic = [
@@ -1189,6 +1200,10 @@ pydantic = [
     {file = "pydantic-1.9.0-cp39-cp39-win_amd64.whl", hash = "sha256:2cc6a4cb8a118ffec2ca5fcb47afbacb4f16d0ab8b7350ddea5e8ef7bcc53a16"},
     {file = "pydantic-1.9.0-py3-none-any.whl", hash = "sha256:085ca1de245782e9b46cefcf99deecc67d418737a1fd3f6a4f511344b613a5b3"},
     {file = "pydantic-1.9.0.tar.gz", hash = "sha256:742645059757a56ecd886faf4ed2441b9c0cd406079c2b4bee51bcc3fbcd510a"},
+]
+pyfirecrest = [
+    {file = "pyfirecrest-0.0.12-py3-none-any.whl", hash = "sha256:a532c27a892b56c79e1e9a355d29ff56cf27cea05c221e6c9db4c4cf6382fa12"},
+    {file = "pyfirecrest-0.0.12.tar.gz", hash = "sha256:d1f6d0c8eab10479010a78e6a37d642f3b637bed1fde96cf8adfb236f1f1aa00"},
 ]
 pyflakes = [
     {file = "pyflakes-2.4.0-py2.py3-none-any.whl", hash = "sha256:3bb3a3f256f4b7968c9c788781e4ff07dce46bdf12339dcda61053375426ee2e"},
