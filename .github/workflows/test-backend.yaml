@@ -1,3 +1,4 @@
+---
 name: Test Backend
 
 on:
@@ -42,12 +43,16 @@ jobs:
           VERSION: test
           RELEASEID: test
         run: |
-          python -m pytest --cov=app --cov-report=xml
+          coverage run --concurrency=thread,greenlet --source=app -m pytest
+          coverage xml
+        # https://github.com/nedbat/coveragepy/issues/1082
+        # pytest-cov doesn't seem to support the `concurrency` flag so
+        # using coverage commands
 
       - name: Codecov
         # You may pin to the exact commit or the version.
         # uses: codecov/codecov-action@f32b3a3741e1053eb607407145bc9619351dc93b
         uses: codecov/codecov-action@v2
         with:
-          # Flag upload to group coverage metrics (e.g. unittests | integration | ui,chrome)
+          # Flag upload to group coverage metrics (e.g. unittests, integration)
           flags: backend # optional
