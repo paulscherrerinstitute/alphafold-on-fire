@@ -8,10 +8,14 @@ updates:
   - package-ecosystem: "pip"
     directory: "/backend"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    reviewers:
+      - "pozsa"
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    reviewers:
+      - "pozsa"
