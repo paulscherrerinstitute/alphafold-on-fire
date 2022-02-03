@@ -9,6 +9,8 @@ class Settings(pydantic.BaseSettings):
     db_uri: pydantic.PostgresDsn
     db_echo: bool = False
     db_hide_params: bool = True
+    audience: str
+    auth_server: list[pydantic.AnyHttpUrl]
 
 
 @functools.lru_cache

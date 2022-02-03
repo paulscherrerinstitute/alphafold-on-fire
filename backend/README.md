@@ -7,11 +7,14 @@
 ## Project structure
 ```console
 .
+├── alembic  # database migrations
 ├── app  # src for the application
+│   ├── routers  # route definitions
+│   ├── schemas  # pydantic model definitions
 │   ├── config.py  # reading in settings from env
 │   ├── database.py  # configuring database connection
 │   ├── main.py  # main entrypoint for the application
-│   ├── routers  # route definitions
-│   └── schemas  # pydantic model definitions
+│   └── security.py  # implementing jwt validation
+├── keycloak  # development realm configuration
 └── tests  # tests
 ```

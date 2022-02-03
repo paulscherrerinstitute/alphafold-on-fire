@@ -42,6 +42,7 @@ services:
     container_name: app-aof
     depends_on:
       - postgres
+      - keycloak
     build:
       context: .
       target: development
@@ -53,14 +54,21 @@ services:
       - DB_URI=postgresql+asyncpg://admin:admin@postgres/aof
       - DB_ECHO=True
       - DB_HIDE_PARAMS=False
+      - AUDIENCE=alphafold-backend
+      - AUTH_SERVER=["http://localhost:8080/auth/realms/dev"]
     ports:
       - 8000:8000
-    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    entrypoint: >
+      /bin/sh -c "
+      KEYCLOAK_IP=$$(getent hosts keycloak | awk '{ print $$1 }');
+      echo \"$$KEYCLOAK_IP localhost\" >> /etc/hosts;
+      exec uvicorn app.main:app --host 0.0.0.0 --reload
+      "
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "curl -f http://localhost:8000/health || exit 1"
+          "curl -f http://127.0.0.1:8000/health || exit 1"
         ]
 
 volumes:
