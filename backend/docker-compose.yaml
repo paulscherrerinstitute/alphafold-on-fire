@@ -53,6 +53,8 @@ services:
       - DB_URI=postgresql+asyncpg://admin:admin@postgres/aof
       - DB_ECHO=True
       - DB_HIDE_PARAMS=False
+      - AUDIENCE=alphafold-backend
+      - AUTH_SERVER=["http://host.docker.internal:8080/auth/realms/dev"]
     ports:
       - 8000:8000
     command: uvicorn app.main:app --host 0.0.0.0 --reload
