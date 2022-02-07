@@ -11,7 +11,7 @@ fastapi = "^0.73.0"
 uvicorn = {extras = ["standard"], version = "^0.17.1"}
 SQLAlchemy = "^1.4.29"
 asyncpg = "^0.25.0"
-alembic = "^1.7.5"
+alembic = "^1.7.6"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 requests = "^2.27.1"
 pyfirecrest = "^0.0.12"
