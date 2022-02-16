@@ -575,7 +575,7 @@ use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
 name = "requests-cache"
-version = "0.9.1"
+version = "0.9.2"
 description = "A transparent persistent cache for the requests library"
 category = "main"
 optional = false
@@ -768,7 +768,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "94d739b3fb50231e73097a6f5e479677ca2f02c67d29afe4ae67c1c965e1c744"
+content-hash = "7bda604ddb172a096c84ca0b43be8cf3b82441f0867be00b3baf11039b1a95e3"
 
 [metadata.files]
 alembic = [
@@ -1340,8 +1340,8 @@ requests = [
     {file = "requests-2.27.1.tar.gz", hash = "sha256:68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"},
 ]
 requests-cache = [
-    {file = "requests-cache-0.9.1.tar.gz", hash = "sha256:7737f83f0f48481a904bb9a9402233db5090931e46f9644c502646a573848d35"},
-    {file = "requests_cache-0.9.1-py3-none-any.whl", hash = "sha256:3e3384c48dca231ee4c49e7ba53162bc0d99e16721baf085bfba1552d065d151"},
+    {file = "requests-cache-0.9.2.tar.gz", hash = "sha256:71c03bfba2e2e30a8484fe6ac7a97e4ad3fb569bc8f1f554fe01e27c51b47810"},
+    {file = "requests_cache-0.9.2-py3-none-any.whl", hash = "sha256:318d0f228f785af02d159e973fdf7d06568f795b8099b01b3d066430a3194226"},
 ]
 rsa = [
     {file = "rsa-4.8-py3-none-any.whl", hash = "sha256:95c5d300c4e879ee69708c428ba566c59478fd653cc3a22243eeb8ed846950bb"},
