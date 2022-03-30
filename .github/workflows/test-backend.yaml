@@ -32,24 +32,42 @@ jobs:
       matrix:
         postgres: [13-alpine, 14-alpine]
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
         image: postgres:${{ matrix.postgres }}
-        # Provide the password for postgres
         env:
           POSTGRES_USER: admin
           POSTGRES_PASSWORD: admin
           POSTGRES_DB: aof
-        # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      keycloak:
+        image: quay.io/keycloak/keycloak:15.1.0
+        volumes:
+          - ${{ github.workspace }}/backend/keycloak:/tmp/io
+        env:
+          DB_VENDOR: h2 # force keycloak to use its internal DB
+          # (it autodetects the running postgres instance)
+          KEYCLOAK_USER: admin
+          KEYCLOAK_PASSWORD: admin
+          KEYCLOAK_IMPORT: /tmp/io/dev-realm.json
+          # KEYCLOAK_STATISTICS: all # enables the health endpoint under 9990
+        options: >-
+          --health-cmd "curl -f http://keycloak:8080/auth || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-start-period 90s
+          --health-retries 15
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      # - name: Import keycloak realm
+      #   run: |
+      #     docker exec keycloak kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin
+      #     docker exec keycloak kcadm.sh create realms -f /tmp/io/dev-realm.json
 
       - name: Install dependencies
         run: |
@@ -63,6 +81,9 @@ jobs:
           VERSION: test
           RELEASEID: test
           DB_URI: postgresql+asyncpg://admin:admin@postgres/aof
+          AUDIENCE: alphafold-backend
+          AUTH_SERVER: '["http://keycloak:8080/auth/realms/dev"]'
+
         run: |
           coverage run --concurrency=thread,greenlet --source=app -m pytest
           coverage xml
