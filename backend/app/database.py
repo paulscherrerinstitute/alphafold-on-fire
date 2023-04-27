@@ -2,7 +2,6 @@ from typing import AsyncIterator
 
 import sqlalchemy as sa
 import sqlalchemy.ext.asyncio as saa
-from sqlalchemy import orm
 
 from app import config
 
@@ -15,13 +14,10 @@ settings = config.get_settings()
 # hide_parameters: Boolean, when set to True, SQL statement parameters will not be
 # displayed in INFO logging nor will they be formatted into the string representation
 # of StatementError objects.
-#
-# future=True: Use the 2.0 style Engine and Connection API.
 engine = saa.create_async_engine(
     settings.db_uri,
     echo=settings.db_echo,
-    hide_parameters=settings.db_hide_params,
-    future=True,
+    hide_parameters=settings.db_hide_params
 )
 
 # https://alembic.sqlalchemy.org/en/latest/naming.html
@@ -32,7 +28,7 @@ convention = {
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
     "pk": "pk_%(table_name)s",
 }
-mapper_registry = orm.registry(sa.MetaData(naming_convention=convention))
+metadata = sa.MetaData(naming_convention=convention)
 
 
 async def get_db() -> AsyncIterator[saa.AsyncSession]:
