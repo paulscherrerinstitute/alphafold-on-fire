@@ -1,5 +1,7 @@
 FROM python:3.9 AS development
 WORKDIR /usr/src/aof
-RUN pip install --no-cache-dir poetry==1.1.11 && poetry config virtualenvs.create false
+RUN curl -sSL https://install.python-poetry.org | python3 - --version 1.4.2
+ENV PATH="/root/.local/bin:${PATH}"
 COPY poetry.lock pyproject.toml ./
-RUN poetry install --no-interaction --no-ansi
+RUN poetry config virtualenvs.create false && \
+    poetry install --no-interaction --no-ansi
