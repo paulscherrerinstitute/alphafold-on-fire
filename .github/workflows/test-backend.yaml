@@ -28,14 +28,11 @@ jobs:
         # Step into backend
         working-directory: ./backend
     # Service containers to run with `container-job`
-    strategy:
-      matrix:
-        postgres: [13-alpine, 14-alpine]
     services:
       # Label used to access the service container
       postgres:
         # Docker Hub image
-        image: postgres:${{ matrix.postgres }}
+        image: postgres:14-alpine
         # Provide the password for postgres
         env:
           POSTGRES_USER: admin
