@@ -32,3 +32,8 @@ jobs:
         uses: chartboost/ruff-action@v1
         with:
           version: 0.0.265
+
+      - name: Black
+        uses: psf/black@stable
+        with:
+          version: "23.3.0"
