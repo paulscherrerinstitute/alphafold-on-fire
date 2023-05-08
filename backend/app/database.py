@@ -15,9 +15,7 @@ settings = config.get_settings()
 # displayed in INFO logging nor will they be formatted into the string representation
 # of StatementError objects.
 engine = saa.create_async_engine(
-    settings.db_uri,
-    echo=settings.db_echo,
-    hide_parameters=settings.db_hide_params
+    settings.db_uri, echo=settings.db_echo, hide_parameters=settings.db_hide_params
 )
 
 # https://alembic.sqlalchemy.org/en/latest/naming.html
