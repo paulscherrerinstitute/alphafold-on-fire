@@ -22,7 +22,7 @@ jobs:
   test:
     name: Test Code
     runs-on: ubuntu-latest
-    container: python:3.9
+    container: python:3.10
     defaults:
       run:
         # Step into backend

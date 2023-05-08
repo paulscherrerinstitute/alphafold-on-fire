@@ -1,4 +1,4 @@
-FROM python:3.9 AS development
+FROM python:3.10 AS development
 WORKDIR /usr/src/aof
 RUN curl -sSL https://install.python-poetry.org | python3 - --version 1.4.2
 ENV PATH="/root/.local/bin:${PATH}"
