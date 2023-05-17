@@ -11,7 +11,7 @@ fastapi = "0.95.2"
 uvicorn = {version = "0.22.0", extras = ["standard"]}
 sqlalchemy = "2.0.13"
 asyncpg = "0.27.0"
-alembic = "1.10.4"
+alembic = "1.11.0"
 python-jose = {version = "3.3.0", extras = ["cryptography"]}
 requests = "2.30.0"
 pyfirecrest = "1.4.0"
