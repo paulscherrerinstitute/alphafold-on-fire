@@ -13,7 +13,7 @@ sqlalchemy = "2.0.15"
 asyncpg = "0.27.0"
 alembic = "1.11.1"
 python-jose = {version = "3.3.0", extras = ["cryptography"]}
-requests = "2.30.0"
+requests = "2.31.0"
 pyfirecrest = "1.4.0"
 requests-cache = "1.0.1"
 
