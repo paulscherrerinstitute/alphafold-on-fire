@@ -9,7 +9,7 @@ license = "GPL-3.0-only"
 python = "^3.10"
 fastapi = "0.95.2"
 uvicorn = {version = "0.22.0", extras = ["standard"]}
-sqlalchemy = "2.0.13"
+sqlalchemy = "2.0.15"
 asyncpg = "0.27.0"
 alembic = "1.11.1"
 python-jose = {version = "3.3.0", extras = ["cryptography"]}
