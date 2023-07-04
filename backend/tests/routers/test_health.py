@@ -19,7 +19,7 @@ def test_get_health() -> None:
         assert key in payload
     assert payload["status"] == "pass"
     assert payload["version"] == settings.version
-    assert payload["releaseId"] == settings.releaseId
+    assert payload["releaseId"] == settings.release_id
     for key in ["postgresql:responseTime", "postgresql:uptime"]:
         assert key in payload["checks"]
         for item in payload["checks"][key]:

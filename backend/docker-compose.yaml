@@ -50,7 +50,7 @@ services:
       - .:/usr/src/aof
     environment:
       - VERSION=dev
-      - RELEASEID=dev
+      - RELEASE_ID=dev
       - DB_URI=postgresql+asyncpg://admin:admin@postgres/aof
       - DB_ECHO=True
       - DB_HIDE_PARAMS=False
