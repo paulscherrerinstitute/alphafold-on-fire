@@ -15,7 +15,7 @@ alembic = "1.11.1"
 python-jose = {version = "3.3.0", extras = ["cryptography"]}
 requests = "2.31.0"
 pyfirecrest = "1.4.0"
-requests-cache = "1.0.1"
+requests-cache = "1.1.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "1.4.1"
