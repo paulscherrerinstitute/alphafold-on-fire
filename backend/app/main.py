@@ -6,7 +6,7 @@ from app.routers import health
 settings = config.get_settings()
 app = fastapi.FastAPI(
     title="alphafold-on-fire",
-    version=settings.releaseId,
+    version=settings.release_id,
     swagger_ui_init_oauth={
         "clientId": "alphafold-frontend",
         "scopes": "openid email",

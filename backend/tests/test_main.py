@@ -8,7 +8,7 @@ client = testclient.TestClient(main.app)
 
 def test_app() -> None:
     assert main.app.title == "alphafold-on-fire"
-    assert main.app.version == settings.releaseId
+    assert main.app.version == settings.release_id
 
 
 def test_get_root() -> None:

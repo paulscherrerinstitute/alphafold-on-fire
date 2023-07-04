@@ -5,7 +5,7 @@ import pydantic
 
 class Settings(pydantic.BaseSettings):
     version: str
-    releaseId: str  # noqa: N815
+    release_id: str
     db_uri: pydantic.PostgresDsn
     db_echo: bool = False
     db_hide_params: bool = True

@@ -35,7 +35,7 @@ async def get_health(
     content = {
         "status": schemas.Status.PASS,
         "version": settings.version,
-        "releaseId": settings.releaseId,
+        "releaseId": settings.release_id,
         "checks": {
             "postgresql:responseTime": [
                 {
