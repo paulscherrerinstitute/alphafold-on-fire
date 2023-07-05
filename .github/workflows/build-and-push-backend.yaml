@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "backend/**"
+      - ".github/workflows/build-and-push-backend.yaml"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,5 +31,6 @@ jobs:
       - run: |
           docker build . \
           -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:${{ github.sha }} \
-          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:dev
+          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:staging \
+          --build-arg VERSION=${{ github.sha }}
           docker push --all-tags ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold
