@@ -1,0 +1,34 @@
+---
+name: Build and Push Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    name: Build and Push
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        # Step into backend
+        working-directory: ./backend
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 'Build and push image'
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+          docker build . \
+          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:${{ github.sha }} \
+          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:dev
+          docker push --all-tags ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold
