@@ -7,18 +7,19 @@ RUN poetry config virtualenvs.create false && \
     poetry install --no-interaction --no-ansi
 
 FROM development AS build
-RUN poetry export -o requirements.txt
+RUN poetry export --without-hashes -o requirements.txt
 
 FROM python:3.10-alpine AS production
 WORKDIR /usr/src/aof
 ARG VERSION
 ENV VERSION=${VERSION}
+RUN python -m pip install --upgrade pip
 COPY --from=build /usr/src/aof/requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir -r requirements.txt
 COPY ./alembic ./alembic
 COPY alembic.ini ./
 COPY ./app ./app
-RUN groupadd -r aof && useradd --no-log-init -r -g aof aof
+RUN addgroup -S aof && adduser -S aof -G aof
 USER aof
 EXPOSE 8000
 HEALTHCHECK CMD curl -f http://localhost:8000/health || exit 1
