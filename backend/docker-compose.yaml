@@ -38,8 +38,8 @@ services:
         ]
       start_period: 1m30s # realm import seems to take some time
 
-  app:
-    container_name: app-aof
+  backend:
+    container_name: backend-aof
     depends_on:
       - postgres
       - keycloak
