@@ -19,3 +19,11 @@ updates:
       interval: "daily"
     reviewers:
       - "pozsa"
+
+  # Maintain dependencies for Frontend (npm)
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "pozsa"

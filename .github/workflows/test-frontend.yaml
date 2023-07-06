@@ -1,0 +1,48 @@
+---
+name: Test Frontend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - "!frontend/README.md"
+      - ".github/workflows/test-frontend.yaml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - "!frontend/README.md"
+      - ".github/workflows/test-frontend.yaml"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test Code
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        # Step into frontend
+        working-directory: ./frontend    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.16
+          cache: 'npm'
+          cache-dependency-path: 'frontend'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run tests
+        run: npm run test
