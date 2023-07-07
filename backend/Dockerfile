@@ -12,7 +12,9 @@ RUN poetry export --without-hashes -o requirements.txt
 FROM python:3.10-alpine AS production
 WORKDIR /usr/src/aof
 ARG VERSION
-ENV VERSION=${VERSION}
+ARG RELEASE_ID
+ENV VERSION=${VERSION} \
+    RELEASE_ID=${RELEASE_ID}
 RUN python -m pip install --upgrade pip
 COPY --from=build /usr/src/aof/requirements.txt ./
 RUN python -m pip install --no-cache-dir -r requirements.txt
