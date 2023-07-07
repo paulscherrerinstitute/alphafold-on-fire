@@ -12,17 +12,17 @@ on:
 
 jobs:
   build-and-push:
-    name: Build and Push
+    name: Build and push image
     runs-on: ubuntu-latest
     defaults:
       run:
         # Step into backend
         working-directory: ./backend
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 'Build and push image'
+      - name: Build and push image
         uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
           docker build . \
-          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:${{ github.sha }} \
-          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:staging \
-          --build-arg VERSION=${{ github.sha }}
-          docker push --all-tags ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold
+          --build-arg VERSION=${{ github.sha }} \
+          --build-arg RELEASE_ID=${{ github.sha }} \
+          -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:stage
+          docker push {{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:stage
