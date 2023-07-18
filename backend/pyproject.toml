@@ -23,7 +23,7 @@ pytest-cov = "4.1.0"
 pytest = "7.4.0"
 black = "23.7.0"
 httpx = "0.24.1"
-ruff = "0.0.277"
+ruff = "0.0.278"
 
 [tool.ruff]
 select = [
