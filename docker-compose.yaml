@@ -1,0 +1,80 @@
+---
+services:
+  postgres:
+    container_name: postgres-aof
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=aof
+    volumes:
+      - aof-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d aof -U admin" ]
+
+  keycloak:
+    container_name: keycloak-aof
+    image: quay.io/keycloak/keycloak:15.1.0
+    volumes:
+      - ./backend/keycloak:/tmp/io
+    environment:
+      - DB_VENDOR=h2 # force keycloak to use its internal DB
+      # (it autodetects the running postgres instance)
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/io/dev-realm.json
+      - KEYCLOAK_STATISTICS=all # enables the health endpoint under 9990
+    ports:
+      - 8080:8080
+      - 9990:9990
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:9990/health || exit 1"
+        ]
+      start_period: 1m30s # realm import seems to take some time
+
+  backend:
+    container_name: backend-aof
+    depends_on:
+      - postgres
+      - keycloak
+    build:
+      context: ./backend
+      target: development
+    volumes:
+      - ./backend:/usr/src/aof
+    environment:
+      - VERSION=dev
+      - RELEASE_ID=dev
+      - DB_URI=postgresql+asyncpg://admin:admin@postgres/aof
+      - DB_ECHO=True
+      - DB_HIDE_PARAMS=False
+      - AUDIENCE=alphafold-backend
+      - AUTH_SERVER=["http://localhost:8080/auth/realms/dev"]
+    ports:
+      - 8000:8000
+    entrypoint: >
+      /bin/sh -c " KEYCLOAK_IP=$$(getent hosts keycloak | awk '{ print $$1 }'); echo \"$$KEYCLOAK_IP localhost\" >> /etc/hosts; exec uvicorn app.main:app --host 0.0.0.0 --reload "
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://127.0.0.1:8000/health || exit 1"
+        ]
+
+  frontend:
+    container_name: frontend-aof
+    build:
+      context: ./frontend
+      target: development
+    volumes:
+      - ./frontend:/home/node/aof
+    ports:
+      - 5173:5173
+    command: npm run dev -- --host 0.0.0.0
+
+volumes:
+  aof-postgres-data: null
