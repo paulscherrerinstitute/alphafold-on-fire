@@ -25,9 +25,9 @@
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail>
 			<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>(fa home icon)</AppRailAnchor>
-			<AppRailAnchor href="/about" selected={$page.url.pathname === '/about'}
-				>(fa about icon)</AppRailAnchor
-			>
+			<AppRailAnchor href="/about" selected={$page.url.pathname === '/about'}>
+				(fa about icon)
+			</AppRailAnchor>
 			<!-- Trail -->
 			<svelte:fragment slot="trail">
 				<AppRailAnchor
