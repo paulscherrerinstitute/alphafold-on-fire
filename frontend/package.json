@@ -15,7 +15,7 @@
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.36.2",
+		"@playwright/test": "1.37.1",
 		"@skeletonlabs/skeleton": "1.11.0",
 		"@sveltejs/adapter-auto": "2.1.0",
 		"@sveltejs/kit": "1.22.4",
