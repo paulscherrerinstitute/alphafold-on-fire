@@ -10,8 +10,8 @@ from app import config
 settings = config.get_settings()
 
 _oauth_scheme = security.OAuth2AuthorizationCodeBearer(
-    authorizationUrl=f"{settings.auth_server[0]}/protocol/openid-connect/auth",
-    tokenUrl=f"{settings.auth_server[0]}/protocol/openid-connect/token",
+    authorizationUrl=f"{settings.auth_server}/protocol/openid-connect/auth",
+    tokenUrl=f"{settings.auth_server}/protocol/openid-connect/token",
 )
 
 
@@ -50,7 +50,7 @@ def get_claims(
     except exceptions.JWTError:
         raise _invalid_token_exception
 
-    if claims.get("iss") not in settings.auth_server:
+    if claims.get("iss") != settings.auth_server:
         raise _invalid_token_exception
 
     url = f"{claims['iss']}/.well-known/openid-configuration"

@@ -12,7 +12,7 @@ _fake_iss_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkw
 
 
 def _get_valid_token() -> str:
-    token_url = f"{settings.auth_server[0]}/protocol/openid-connect/token"
+    token_url = f"{settings.auth_server}/protocol/openid-connect/token"
     data = {
         "grant_type": "password",
         "client_id": "alphafold-frontend",
@@ -32,7 +32,7 @@ def test__get_jwks_no_auth_server(clear_cache: bool) -> None:
 
 
 def test__get_jwks() -> None:
-    url = f"{settings.auth_server[0]}/.well-known/openid-configuration"
+    url = f"{settings.auth_server}/.well-known/openid-configuration"
     jwks = security._get_jwks(url=url, clear_cache=True)
     assert "keys" in jwks
 
