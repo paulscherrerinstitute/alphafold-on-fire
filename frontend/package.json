@@ -19,7 +19,7 @@
 		"@skeletonlabs/skeleton": "1.11.0",
 		"@sveltejs/adapter-auto": "2.1.0",
 		"@sveltejs/kit": "1.23.1",
-		"@typescript-eslint/eslint-plugin": "5.61.0",
+		"@typescript-eslint/eslint-plugin": "6.5.0",
 		"@typescript-eslint/parser": "5.62.0",
 		"autoprefixer": "10.4.15",
 		"eslint": "8.46.0",
