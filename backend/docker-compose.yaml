@@ -55,7 +55,7 @@ services:
       - DB_ECHO=True
       - DB_HIDE_PARAMS=False
       - AUDIENCE=alphafold-backend
-      - AUTH_SERVER=["http://localhost:8080/auth/realms/dev"]
+      - AUTH_SERVER=http://localhost:8080/auth/realms/dev
     ports:
       - 8000:8000
     entrypoint: >

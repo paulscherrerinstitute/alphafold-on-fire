@@ -85,7 +85,7 @@ jobs:
           RELEASE_ID: test
           DB_URI: postgresql+asyncpg://admin:admin@localhost/aof
           AUDIENCE: alphafold-backend
-          AUTH_SERVER: '["http://localhost:8080/auth/realms/dev"]'
+          AUTH_SERVER: http://localhost:8080/auth/realms/dev
         run: |
           poetry run coverage run --concurrency=thread,greenlet --source=app -m pytest
           poetry run coverage report -m
