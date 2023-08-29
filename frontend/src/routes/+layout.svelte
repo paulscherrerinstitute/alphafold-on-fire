@@ -3,7 +3,13 @@
 	import { page } from '$app/stores';
 
 	// Components & Utilities
-	import { AppShell, AppBar, AppRail, AppRailAnchor, LightSwitch } from '@skeletonlabs/skeleton';
+	import {
+		AppShell,
+		AppBar,
+		AppRail,
+		AppRailAnchor,
+		LightSwitch
+	} from '@skeletonlabs/skeleton';
 
 	// Skeleton Stylesheets
 	// Your selected Skeleton theme:
@@ -24,7 +30,9 @@
 	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail>
-			<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>(fa home icon)</AppRailAnchor>
+			<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>
+				(fa home icon)
+			</AppRailAnchor>
 			<AppRailAnchor href="/about" selected={$page.url.pathname === '/about'}>
 				(fa about icon)
 			</AppRailAnchor>
