@@ -1,9 +1,10 @@
 import functools
 
 import pydantic
+import pydantic_settings
 
 
-class Settings(pydantic.BaseSettings):
+class Settings(pydantic_settings.BaseSettings):
     version: str
     release_id: str
     db_uri: pydantic.PostgresDsn

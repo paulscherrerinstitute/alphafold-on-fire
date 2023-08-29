@@ -50,14 +50,14 @@ def get_claims(
     except exceptions.JWTError:
         raise _invalid_token_exception
 
-    if claims.get("iss") != settings.auth_server:
+    if claims.get("iss") != str(settings.auth_server):
         raise _invalid_token_exception
 
     url = f"{claims['iss']}/.well-known/openid-configuration"
     jwks = _get_jwks(url)
     try:
         claims = jwt.decode(
-            token, jwks, audience=settings.audience, issuer=settings.auth_server
+            token, jwks, audience=settings.audience, issuer=str(settings.auth_server)
         )
     except exceptions.JWTError:
         raise _invalid_token_exception
