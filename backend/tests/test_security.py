@@ -47,7 +47,7 @@ def test_get_claims_invalid_token(token: str | None) -> None:
 
 
 def test_get_claims_invalid_audience() -> None:
-    no_aud_settings = settings.copy(update={"audience": "invalid"}, deep=True)
+    no_aud_settings = settings.model_copy(update={"audience": "invalid"}, deep=True)
     with pytest.raises(fastapi.HTTPException) as excinfo:
         _ = security.get_claims(token=_get_valid_token(), settings=no_aud_settings)
     assert security._invalid_token_exception == excinfo.value
