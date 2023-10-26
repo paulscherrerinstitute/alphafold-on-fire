@@ -1141,24 +1141,25 @@ python-dotenv = ">=0.21.0"
 
 [[package]]
 name = "pyfirecrest"
-version = "1.5.1"
+version = "2.0.0"
 description = "pyFirecrest is a python wrapper for FirecREST"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyfirecrest-1.5.1-py3-none-any.whl", hash = "sha256:edaef3ac1b5fbcedbe7305b9b7b9077149402d343f1d7dbdba85ccacfc30ffa5"},
-    {file = "pyfirecrest-1.5.1.tar.gz", hash = "sha256:02e1485b53aa128215fca17daea4f268a9bd8e549f7b35603be52942ab8bee80"},
+    {file = "pyfirecrest-2.0.0-py3-none-any.whl", hash = "sha256:f606f595bcaaf17ed0391ef7cec344191f2afcea8f19ad5092ba43bf7312dfad"},
+    {file = "pyfirecrest-2.0.0.tar.gz", hash = "sha256:d400345e4e659a0d309ebc7d11c63b488bba44f7d37480916a656b485ac6f1fc"},
 ]
 
 [package.dependencies]
-packaging = ">=23.1"
+httpx = ">=0.24.0"
+packaging = ">=21.0"
 PyJWT = ">=2.4.0"
 requests = ">=2.14.0"
 typer = {version = ">=0.7.0,<0.8.0", extras = ["all"]}
 
 [package.extras]
 docs = ["myst-parser (>=0.16)", "sphinx (>=4.0)", "sphinx-autobuild (>=2021.0)", "sphinx-click (==3.0.2)", "sphinx-rtd-theme (>=1.0)"]
-test = ["flake8 (>=5.0,<6.0)", "httpretty (>=1.0.3)", "mypy (>=0.991,<1.0)", "pytest (>=5.3)", "types-requests (>=2.28.11,<2.29.0)"]
+test = ["flake8 (>=5.0,<6.0)", "mypy (>=0.991,<1.0)", "pytest (>=5.3)", "pytest-asyncio (>=0.21.1)", "pytest-httpserver (>=1.0.6,<1.1.0)", "types-requests (>=2.28.11,<2.29.0)"]
 
 [[package]]
 name = "pygments"
@@ -1833,4 +1834,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "cc6c1500626844043473fcdfbfcbc5c1a754a546d8a36c63792a3c2ee07dda08"
+content-hash = "76472b4ce3edd1ba2d73f27cb41701e0da74c17d03f0f76196e5148714eb34ec"

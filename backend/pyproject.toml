@@ -14,7 +14,7 @@ asyncpg = "0.28.0"
 alembic = "1.12.0"
 python-jose = {version = "3.3.0", extras = ["cryptography"]}
 requests = "2.31.0"
-pyfirecrest = "1.5.1"
+pyfirecrest = "2.0.0"
 requests-cache = "1.1.0"
 pydantic-settings = "2.0.3"
 
