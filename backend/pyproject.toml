@@ -16,7 +16,7 @@ python-jose = {version = "3.3.0", extras = ["cryptography"]}
 requests = "2.31.0"
 pyfirecrest = "2.0.0"
 requests-cache = "1.1.0"
-pydantic-settings = "2.0.3"
+pydantic-settings = "2.1.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "1.7.0"
