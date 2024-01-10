@@ -1150,13 +1150,13 @@ python-dotenv = ">=0.21.0"
 
 [[package]]
 name = "pyfirecrest"
-version = "2.0.0"
+version = "2.1.0"
 description = "pyFirecrest is a python wrapper for FirecREST"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyfirecrest-2.0.0-py3-none-any.whl", hash = "sha256:f606f595bcaaf17ed0391ef7cec344191f2afcea8f19ad5092ba43bf7312dfad"},
-    {file = "pyfirecrest-2.0.0.tar.gz", hash = "sha256:d400345e4e659a0d309ebc7d11c63b488bba44f7d37480916a656b485ac6f1fc"},
+    {file = "pyfirecrest-2.1.0-py3-none-any.whl", hash = "sha256:9a6225aca4a2996b44774b28623d6e3cf55c9081a75d1fcc31c900878302c6a4"},
+    {file = "pyfirecrest-2.1.0.tar.gz", hash = "sha256:aea71382780f69cf57ae9d615edd8a2807cd038dd8352fe1719e8e1b6be77da8"},
 ]
 
 [package.dependencies]
@@ -1899,4 +1899,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "df6fb0e64cec17c016286543903c61dddf1ad39df1279c58823cb8ad02f212c0"
+content-hash = "c3df1ec861fc893a8eb37dde7008ed37a09001980571ea7d3e9033470550f502"
