@@ -61,7 +61,7 @@ jobs:
           quay.io/keycloak/keycloak:15.1.0
 
       - name: Install poetry
-        run: pipx install poetry==1.6.1
+        run: pipx install poetry==1.7.1
 
       - name: Set up python
         uses: actions/setup-python@v4
