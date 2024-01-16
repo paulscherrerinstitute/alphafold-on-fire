@@ -34,7 +34,7 @@
 		"tslib": "2.6.2",
 		"typescript": "5.2.2",
 		"vite": "4.5.1",
-		"vitest": "0.34.6"
+		"vitest": "1.2.0"
 	},
 	"type": "module",
 	"prettier": {
