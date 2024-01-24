@@ -45,4 +45,8 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run tests
+        env:
+          EDU_ID_ISSUER: ${{ secrets.EDU_ID_ISSUER }}
+          EDU_ID_CLIENT_ID: ${{ secrets.EDU_ID_CLIENT_ID }}
+          EDU_ID_CLIENT_SECRET: ${{ secrets.EDU_ID_CLIENT_SECRET }}
         run: npm run test
