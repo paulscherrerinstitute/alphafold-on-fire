@@ -98,7 +98,7 @@ jobs:
         run: docker stop keycloak
 
       - name: Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           # Flag upload to group coverage metrics (e.g. unittests, integration)
           flags: backend # optional
