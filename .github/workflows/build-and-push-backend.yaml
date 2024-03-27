@@ -72,7 +72,7 @@ jobs:
       - name: Docker Scout
         id: docker-scout
         if: ${{ github.event_name == 'pull_request' }}
-        uses: docker/scout-action@v0.18.1
+        uses: docker/scout-action@v1.6.4
         with:
           command: compare
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/alphafold:${{ steps.meta.outputs.version }}
